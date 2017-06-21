@@ -2,7 +2,7 @@ var bio = {
     name: "Tushar Goel",
     role: "Senior Software Developer",
     contacts: {
-        mobile: "+91 7022277246",
+        mobile: "+91 9999911111",
         email: "goeltushar23@gmail.com",
         github: "goeltushar23",
         twitter: "Goeltushar23",
@@ -18,7 +18,9 @@ var bio = {
         var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", this.welcomeMessage);
 
         var topContacts = $("#topContacts");
-        var formattedContact, formattedContacts = "";
+        var formattedContact;
+        var formattedContacts = "";
+
         for (var key in this.contacts) {
             if (this.contacts.hasOwnProperty(key)) {
                 formattedContact = HTMLcontactGeneric.replace("%contact%", key);
@@ -41,7 +43,7 @@ var bio = {
         });
         skills.append(formattedSkills);
     }
-}
+};
 
 
 var work = {
@@ -60,11 +62,12 @@ var work = {
     }],
     display: function() {
         var workExperience = $("#workExperience");
+        var workEntry;
         var formattedEmployer, formattedTitle, formattedDates, formmattedLocation, formattedDescription;
 
         this.jobs.forEach(function(job) {
             workExperience.append(HTMLworkStart);
-            var workEntry = $(".work-entry:last");
+            workEntry = $(".work-entry:last");
 
             formattedEmployer = HTMLworkEmployer.replace(/%data%|#/g, job.employer);
             formattedTitle = HTMLworkTitle.replace("%data%", job.title);
@@ -75,7 +78,7 @@ var work = {
             workEntry.append(formattedEmployer + formattedTitle, formattedDates, formmattedLocation, formattedDescription);
         });
     }
-}
+};
 
 
 var project = {
@@ -87,12 +90,13 @@ var project = {
     }],
     display: function() {
         var projects = $("#projects");
+        var projectEntry;
         var formattedTitle, formattedDates, formattedDescription;
         var formattedImages = "";
 
         this.projects.forEach(function(project) {
             projects.append(HTMLprojectStart);
-            var projectEntry = $(".project-entry:last");
+            projectEntry = $(".project-entry:last");
 
             formattedTitle = HTMLprojectTitle.replace(/%data%|#/g, project.title);
             formattedDates = HTMLprojectDates.replace("%data%", project.dates);
@@ -104,7 +108,7 @@ var project = {
             projectEntry.append(formattedTitle, formattedDates, formattedDescription, formattedImages);
         });
     }
-}
+};
 
 
 var education = {
@@ -136,6 +140,7 @@ var education = {
     }],
     display: function() {
         var education = $("#education");
+        var educationEntry;
 
         // Schools
         var formattedName, formattedDegree, formattedDates, formattedLocation, formattedMajor;
@@ -153,7 +158,7 @@ var education = {
         });
 
         // Online Courses
-        var formattedOnlineTitle, formattedOnlineSchool, formattedOnlineDates, formattedOnlieURL;
+        var formattedOnlineTitle, formattedOnlineSchool, formattedOnlineDates, formattedOnlineURL;
         education.append(HTMLonlineClasses);
         this.onlineCourses.forEach(function(onlineCourse) {
             education.append(HTMLschoolStart);
@@ -168,13 +173,13 @@ var education = {
         });
 
     }
-}
+};
 
 var map = {
     display: function() {
         $("#mapDiv").append(googleMap);
     }
-}
+};
 
 
 bio.display();
