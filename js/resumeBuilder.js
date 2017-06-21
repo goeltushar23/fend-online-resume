@@ -181,9 +181,28 @@ var map = {
     }
 };
 
+var letsConnect = {
+    display: function() {
+        var footerContacts = $("#footerContacts");
+        var formattedContact;
+        var formattedContacts = "";
+
+        for (var key in bio.contacts) {
+            if (bio.contacts.hasOwnProperty(key)) {
+                formattedContact = HTMLcontactGeneric.replace("%contact%", key);
+                formattedContact = formattedContact.replace("%data%", bio.contacts[key]);
+
+                formattedContacts += formattedContact;
+            }
+        }
+        footerContacts.append(formattedContacts);
+    }
+}
+
 
 bio.display();
 work.display();
 project.display();
 education.display();
 map.display();
+letsConnect.display();
