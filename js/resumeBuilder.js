@@ -197,7 +197,7 @@ var letsConnect = {
         }
         footerContacts.append(formattedContacts);
     }
-}
+};
 
 
 bio.display();
