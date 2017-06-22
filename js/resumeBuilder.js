@@ -17,7 +17,6 @@ var bio = {
         var formattedBioPic = HTMLbioPic.replace("%data%", this.biopic);
         var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", this.welcomeMessage);
 
-        var topContacts = $("#topContacts");
         var formattedContact;
         var formattedContacts = "";
 
@@ -29,7 +28,7 @@ var bio = {
                 formattedContacts += formattedContact;
             }
         }
-        topContacts.append(formattedContacts);
+        $("#topContacts, #footerContacts").append(formattedContacts);
 
         var header = $("#header");
         header.prepend(formattedHeaderRole);
@@ -81,7 +80,7 @@ var work = {
 };
 
 
-var project = {
+var projects = {
     projects: [{
         title: "Next Generation Fashion Automation Tools",
         dates: "Feb 2015 - June 2017",
@@ -116,14 +115,14 @@ var education = {
         name: "JIIT",
         location: "Noida, India",
         degree: "Bachelors in Technology",
-        majors: "Computer Science",
+        majors: ["Computer Science"],
         dates: "June 2008 - May 2012",
         url: "http://www.jiit.ac.in/"
     }, {
         name: "MPS",
         location: "Meerut, India",
         degree: "Higher Secondary",
-        majors: "Information Technology",
+        majors: ["Information Technology", "Physics"],
         dates: "April 2007 - May 2008",
         url: "http://meerutpublicschool.edu.in/"
     }],
@@ -152,7 +151,7 @@ var education = {
             formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
             formattedDates = HTMLschoolDates.replace("%data%", school.dates);
             formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
-            formattedMajor = HTMLschoolMajor.replace("%data%", school.majors);
+            formattedMajor = HTMLschoolMajor.replace("%data%", school.majors.join(", "));
 
             educationEntry.append(formattedName + formattedDegree, formattedDates, formattedLocation, formattedMajor);
         });
@@ -181,28 +180,9 @@ var map = {
     }
 };
 
-var letsConnect = {
-    display: function() {
-        var footerContacts = $("#footerContacts");
-        var formattedContact;
-        var formattedContacts = "";
-
-        for (var key in bio.contacts) {
-            if (bio.contacts.hasOwnProperty(key)) {
-                formattedContact = HTMLcontactGeneric.replace("%contact%", key);
-                formattedContact = formattedContact.replace("%data%", bio.contacts[key]);
-
-                formattedContacts += formattedContact;
-            }
-        }
-        footerContacts.append(formattedContacts);
-    }
-};
-
 
 bio.display();
 work.display();
-project.display();
+projects.display();
 education.display();
 map.display();
-letsConnect.display();
